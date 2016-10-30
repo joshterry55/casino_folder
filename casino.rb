@@ -2,6 +2,7 @@ require 'pry'
 
 require_relative 'player'
 require_relative 'slots'
+require_relative 'indian_poker'
 
 
 
@@ -66,7 +67,7 @@ def ruby_casino_menu
   puts
   puts "$$$ #{@casino_1.name} Games $$$"
   puts "1: Slots"
-  puts "2: Poker"
+  puts "2: Indian Poker"
   puts "3: Exit"
   if @casino_1.name != "Ruby Casino"
     puts "4: My Casino Settings"
@@ -77,7 +78,8 @@ def ruby_casino_menu
   case selection
   when "1", "slots"
     slots_menu
-  when "2", "poker"
+  when "2", "indian", "indian poker"
+    indian_menu
   when "3", "exit"
     puts "\nI hope you enjoyed your time at the #{@casino_1.name}!"
     puts "Come Again"
