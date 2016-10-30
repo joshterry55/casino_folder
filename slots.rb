@@ -31,7 +31,7 @@ def slots_initial_coins
   @slot_coins = gets.strip.to_i
   if @slot_coins * 2 > @player_1.money
     puts "You dont have enough money for that many coins!"
-    slots_initial_coins
+    slots_menu 
   else
     @player_1.money -= @slot_coins * 2
   end
