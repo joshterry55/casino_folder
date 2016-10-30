@@ -54,9 +54,9 @@ def slots_begin
   puts "Pull the Lever? yes or no? Saying no will take you back to Main Menu."
   lever_pull = gets.strip.downcase
   case lever_pull
-  when "yes", 'y'
+  when "yes", "y"
     slots_result
-  when "no"
+  when "no", "n"
     puts "Thanks for playing!"
     slots_menu
   else
@@ -103,6 +103,7 @@ def slots_result
   if @roll_array.uniq.count == 1
     puts "\n\nding ding ding JACKPOT!!!"
     puts "\nYou won 1000 coins!"
+    @slot_coins = (@slot_coins - 1)
     @slot_coins = (@slot_coins + 1000)
     slots_cash_out
     # puts "cash out while your ahead? yes or no"
@@ -145,9 +146,9 @@ end
 def slots_cash_out
   puts "\n\n\ncash out while your ahead? yes or no"
   case gets.strip.downcase
-  when "yes", 'y'
+  when "yes", "y"
     slots_cash_out_yes
-  when "no"
+  when "no", "n"
     slots_begin
   else
     puts "Invalid Selection"
@@ -200,7 +201,7 @@ def buy_casino
       @casino_1.name = gets.strip
       puts "\nIt's done! It's officially the #{@casino_1.name}!"
       slots_menu
-    when "no"
+    when "no", "n"
       puts "Ahhh. Thats too bad."
     else
       puts "I need a yes or a no"

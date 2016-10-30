@@ -57,9 +57,9 @@ def indian_begin
   puts "Are you in? yes or no? Saying no will take you back to Main Menu."
   answer = gets.strip.downcase
   case answer
-  when "yes", 'y'
+  when "yes", "y"
     indian_result
-  when "no"
+  when "no", "n"
     puts "Thanks for playing!"
     indian_menu
   else
@@ -99,9 +99,9 @@ end
 def indian_cash_out
   puts "\n\n\ncash out while your ahead? yes or no"
   case gets.strip.downcase
-  when "yes", 'y'
+  when "yes", "y"
     indian_cash_out_yes
-  when "no"
+  when "no", "n"
     indian_begin
   else
     puts "Invalid Selection"
