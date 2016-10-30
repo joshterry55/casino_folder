@@ -1,4 +1,6 @@
 
+
+@slot_coins = 0
 def slots_menu
   puts "\nWelcome to the SLOTS!"
   puts "Make yourself comfortable, you could be here awhile!"
@@ -12,11 +14,11 @@ def slots_menu
     slots_initial_coins
   when "2", "cash", "out", "cash out"
     slots_cash_out
-  when "no", "n"
+  when "3", "exit"
     puts "Come back later!"
     ruby_casino_menu
   else
-    puts "Invalid Selection, type yes or no."
+    puts "Invalid Selection, type 1, 2 or 3."
     slots_menu
   end
 end
@@ -155,10 +157,45 @@ def slots_cash_out_yes
     @player_1.money = (@player_1.money + @slot_coins * 2)
     @slot_coins = 0
     puts "You have $#{@player_1.money}."
+     if @player_1.money > @casino_1.value
+       buy_casino
+    #   puts "Whoa.... Thats a lot of money you have there..."
+    #   puts "Let me grab the owner."
+    #   puts "----- Owner Arrives -----"
+    #   puts "Seems like you have done really well at the #{@casino_1.name}!"
+    #   puts "Would you be interested in buying the #{@casino_1.name}?"
+    #
+    else
+    end
     puts "\nCome Again!"
     slots_menu
   else
     puts "You received $0 because you had no coins!"
     slots_menu
   end
+end
+
+def buy_casino
+    puts "\nWhoa.... Thats a lot of money you have there..."
+    puts "Let me grab the owner."
+    puts "----- Owner Arrives -----"
+    puts "Seems like you have done really well at the #{@casino_1.name}!"
+    puts "Would you be interested in buying the #{@casino_1.name} for $#{@casino_1.value}? yes or no"
+    case gets.strip.downcase
+    when "yes", "y"
+      puts "You won't regret this!"
+      puts "That will be $#{@casino_1.value}."
+      @player_1.money = (@player_1.money - @casino_1.value)
+      puts
+      puts "What would you like to rename the #{@casino_1.name}? (Example Casino)"
+      @casino_1.name = gets.strip
+      puts "It's done! It's official the #{@casino_1.name}!"
+      slots_menu
+    when "no"
+      puts "Ahhh. Thats too bad."
+    else
+      puts "I need a yes or a no"
+      buy_casino
+    end
+
 end
