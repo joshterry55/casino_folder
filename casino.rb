@@ -4,6 +4,7 @@ require_relative 'player'
 require_relative 'slots'
 
 
+
 class Casino
   attr_accessor :name, :location, :minimum_age, :value
   def initialize(name, location, minimum_age, value)
@@ -91,17 +92,24 @@ end
 
 def casino_settings
   puts "\nWelcome to #{@casino_1.name} Settings!"
-  puts "1: Change Name"
-  puts "2: Exit"
+  puts "1: Change Casino Name"
+  puts "2: Change Your Name"
+  puts "3: Exit"
   selection = gets.strip.downcase
   case selection
   when "1"
     puts "What would you like to change #{@casino_1.name} name to?"
-    name = gets.strip
-    @casino_1.name = name
+    casino_name = gets.strip
+    @casino_1.name = casino_name
     puts "The new name is #{@casino_1.name}!"
     casino_settings
-  when "2", "exit"
+  when "2"
+    puts "Now that your the big shot here, what would you like everyone to call you?"
+    new_name = gets.strip
+    @player_1.name = new_name
+    puts "Alright, from now on we call you #{@player_1.name}"
+    casino_settings
+  when "3", "exit"
     ruby_casino_menu
   else
     puts "Invalid Selection"

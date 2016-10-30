@@ -3,7 +3,7 @@
 @slot_coins = 0
 def slots_menu
   puts "\nWelcome to the SLOTS!"
-  puts "Make yourself comfortable, you could be here awhile!"
+  puts "Make yourself comfortable #{@player_1.name}, you could be here awhile!"
   puts "1: Play Slots"
   puts "2: Cash Out"
   puts "3: Exit"
@@ -31,7 +31,7 @@ def slots_initial_coins
   @slot_coins = gets.strip.to_i
   if @slot_coins * 2 > @player_1.money
     puts "You dont have enough money for that many coins!"
-    slots_menu 
+    slots_menu
   else
     @player_1.money -= @slot_coins * 2
   end
@@ -92,6 +92,9 @@ def buy_more
   end
 end
 
+@losing_array = ["Better luck next time!", "Wow It just isnt your day.", "Come on, spin again!", "You got this next spin!"]
+
+
 def slots_result
   puts "\nSpinning..."
   puts
@@ -114,10 +117,14 @@ def slots_result
     # end
   else
     puts "\n\nAhhh!"
-    puts "\nBetter luck next time!"
+    #puts "\nBetter luck next time!"
+    puts
+    puts "#{@losing_array.sample}"
     @slot_coins = (@slot_coins - 1)
     slots_begin
   end
+
+
 
 end
 
@@ -150,9 +157,9 @@ end
 
 def slots_cash_out_yes
   puts "\n\nYou finished with #{@slot_coins} coins."
-  puts "Wow! You made a KILLING!"
-  puts "Here you go...."
   if @slot_coins > 0
+    puts "Wow! You made a KILLING!"
+    puts "Here you go...."
     puts "\nYou received $#{@slot_coins * 2}!"
     @player_1.money = (@player_1.money + @slot_coins * 2)
     @slot_coins = 0
@@ -170,7 +177,7 @@ def slots_cash_out_yes
     puts "\nCome Again!"
     slots_menu
   else
-    puts "You received $0 because you had no coins!"
+    puts "\nYou received $0 because you had no coins!"
     slots_menu
   end
 end
