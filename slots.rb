@@ -186,10 +186,12 @@ def buy_casino
       puts "You won't regret this!"
       puts "That will be $#{@casino_1.value}."
       @player_1.money = (@player_1.money - @casino_1.value)
+      puts "\n----- Money Received -----"
+      puts "\nYou have $#{@player_1.money}"
       puts
       puts "What would you like to rename the #{@casino_1.name}? (Example Casino)"
       @casino_1.name = gets.strip
-      puts "It's done! It's official the #{@casino_1.name}!"
+      puts "\nIt's done! It's officially the #{@casino_1.name}!"
       slots_menu
     when "no"
       puts "Ahhh. Thats too bad."

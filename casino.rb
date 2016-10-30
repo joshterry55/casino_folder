@@ -16,7 +16,7 @@ class Casino
 end
 
 @player_1 = Person.new
-@casino_1 = Casino.new("Ruby Casino", "Salt Lake City", 21, 3000)
+@casino_1 = Casino.new("Ruby Casino", "Salt Lake City", 21, 1000)
 
 
 #puts "Welcome to the #{@casino_1.name}!"
@@ -24,7 +24,7 @@ end
 def greeting
   puts "\nWelcome to the wonderful world of Gambling!"
   puts "What Casino are we visiting today?"
-  puts "1: Ruby Casino"
+  puts "1: #{@casino_1.name}"
   puts "2: Other Casino"
   selection = gets.strip.downcase
   case selection
